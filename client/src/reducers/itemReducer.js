@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import {
   GET_ITEMS,
   ADD_ITEM,
@@ -27,7 +26,7 @@ export default function (state = initialState, action) {
     case DELETE_ITEM:
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
+        items: state.items.filter((item) => item._id !== action.payload),
       };
     case ITEMS_LOADING:
       return {
