@@ -7,6 +7,17 @@ const app = express();
 //body parser
 app.use(express.json());
 
+// CORS HEADERS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // if it's not set to all domains, update '*' to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+
 //DB config
 const db = require("./config/keys").mongoURI;
 
