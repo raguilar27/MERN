@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const items = require("./routes/api/items");
 const users = require("./routes/api/users");
+const auth = require("./routes/api/auth");
+const config = require("config");
 
 const app = express();
 
@@ -20,7 +22,7 @@ app.use(function (req, res, next) {
 });
 
 //DB config
-const db = require("./config/keys").mongoURI;
+const db = config.get("mongoURI");
 
 //Connect to Mongo
 mongoose
@@ -34,6 +36,7 @@ mongoose
 //Use Routes
 app.use("/api/users", users);
 app.use("/api/items", items);
+app.use("/api/auth", auth);
 
 const port = process.env.PORT || 5000;
 
