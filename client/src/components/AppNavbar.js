@@ -9,6 +9,8 @@ import {
   NavLink,
   Container,
 } from "reactstrap";
+import RegisterModal from "./auth/RegisterModal";
+import Logout from "./auth/Logout";
 
 const AppNavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,9 +26,10 @@ const AppNavBar = (props) => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="https://github.com/raguilar27/MERN">
-                  Github
-                </NavLink>
+                <RegisterModal />
+              </NavItem>
+              <NavItem>
+                <Logout />
               </NavItem>
             </Nav>
           </Collapse>
